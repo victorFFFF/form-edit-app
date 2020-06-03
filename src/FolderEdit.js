@@ -1,41 +1,71 @@
 import React, { Component } from "react";
 
-class FolderEdit extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-         Fname: '',
-         Lname: ''
-        };
-        this.baseState = this.state; 
-     }
-     handleFnameChange = (event) => {
-        this.setState({
-            Fname: event.target.value
-        });
-    }
-    handleLnameChange = (event) => {
-        this.setState({
-            Lname: event.target.value
-        });
-    }
-   
-    state = { showing: true };
-        render(){
-            const { showing } = this.state;
-            return  <div>
-            <div>
-        <input type='text' placeholder = "FirstName" value={this.state.Fname} onChange={this.handleFnameChange}/>
-            </div>
-            <div>
-            <input type='text' placeholder = "LastName"  value={this.state.Lname} onChange={this.handleLnameChange} /> 
-            <button  style={{ display: (showing ? 'block' : 'none') }} onClick={() => this.setState({ showing: !showing })}>Save</button>
-            <button  style={{ display: (showing ? 'block' : 'none') }}  onClick={() => this.setState({ ...this.baseState, showing: !showing })}>Cancel</button>
-            </div>
-            <button  style={{ display: (showing ? 'none' : 'block') }} onClick={() => this.setState({ showing: !showing }) }>Edit</button>
-        </div>
-        }
+ 
+
+class File extends Component {
+
+  constructor() {
+
+    super();
+
+ 
+
+    this.state = {
+
+      tog: false
+
+    
+
+    };
+
+
+  }
+
+
+
+Click = () => {
+
+    this.state.tog
+
+      ? this.setState({ tog: false })
+
+      : this.setState({ tog: true });
+
+  };
+  render() {
+    console.log("in render");
+
+    let visible = this.state.tog ? null : (
+
+      <div>
+
+        <ul>
+
+          <li>File 1</li>
+
+          <li>File 2</li>
+
+          <li>File 3</li>
+
+        </ul>
+
+      </div>
+
+    );
+    return (
+
+      <div className="ml-5">
+
+        <h2>Home</h2>
+
+        {visible}
+
+        <button onClick={this.Click}>Toggle</button>
+
+      </div>
+
+    );
+
+  }
 }
-
-
-export default FolderEdit;
+export default File;
