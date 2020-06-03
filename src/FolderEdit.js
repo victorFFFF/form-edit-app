@@ -5,18 +5,19 @@ class FolderEdit extends Component{
         super(props);
         this.state = {
          Fname: '',
-         Lname: ''
+         Lname: '',
         };
         this.baseState = this.state; 
      }
-     handleFnameChange = (event) => {
+     changeFirst = (event) => {
         this.setState({
-            Fname: event.target.value
+            Fname: event.target.value,
         });
     }
-    handleLnameChange = (event) => {
+
+    changeLast = (event) => {
         this.setState({
-            Lname: event.target.value
+            Lname: event.target.value,
         });
     }
    
@@ -24,14 +25,14 @@ class FolderEdit extends Component{
         render(){
             const { showing } = this.state;
             return  <div>
-            <div>
-        <input type='text' placeholder = "FirstName" value={this.state.Fname} onChange={this.handleFnameChange}/>
-            </div>
-            <div>
-            <input type='text' placeholder = "LastName"  value={this.state.Lname} onChange={this.handleLnameChange} /> 
+
+            <h4 style={{ display: (showing ? 'none' : 'block') }}>First Name :{this.state.Fname}</h4>   
+            <h4 style={{ display: (showing ? 'none' : 'block') }} >Last Name :{this.state.Lname}</h4>   
+            <input style={{ display: (showing ? 'block' : 'none') }} type='text' placeholder = "FirstName"  onChange ={this.changeFirst}/>
+            <input style={{ display: (showing ? 'block' : 'none') }} type='text' placeholder = "LastName"   onChange ={this.changeLast} /> 
+
             <button  style={{ display: (showing ? 'block' : 'none') }} onClick={() => this.setState({ showing: !showing })}>Save</button>
-            <button  style={{ display: (showing ? 'block' : 'none') }}  onClick={() => this.setState({ ...this.baseState, showing: !showing })}>Cancel</button>
-            </div>
+            <button  style={{ display: (showing ? 'block' : 'none') }}  onClick={() => this.setState({...this.baseState, showing: !showing }) }>Cancel</button>
             <button  style={{ display: (showing ? 'none' : 'block') }} onClick={() => this.setState({ showing: !showing }) }>Edit</button>
         </div>
         }
