@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class FolderEdit extends Component{
+class EditForm extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -39,4 +39,4 @@ class FolderEdit extends Component{
 }
 
 
-export default FolderEdit;
+export default EditForm;
